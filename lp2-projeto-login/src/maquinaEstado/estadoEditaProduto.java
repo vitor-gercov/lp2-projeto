@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dtos;
+package maquinaEstado;
 
 /**
  *
  * @author oseas
  */
-public class Main {
+public class estadoEditaProduto extends maquinaEstado{
     
 }

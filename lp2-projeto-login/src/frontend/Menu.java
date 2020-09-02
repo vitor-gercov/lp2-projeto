@@ -9,7 +9,7 @@ package frontend;
  *
  * @author Usuario
  */
-public class Main {
+public class Menu {
 
     /**
      * @param args the command line arguments
