@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mtruck.api.services;
+package mtruck.api.daos;
 
 /**
  *
  * @author GERU\christian.seki
  */
-public class sampleService {
+public class ProdutoDAO {
+    
     
 }
