@@ -32,14 +32,10 @@ public class ProdutoController {
     @GetMapping
     List<Produto> listar() {
 
-        Produto p1 = new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
-
-        Produto p2 = new Produto(2, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
-
+        ProdutoService produtoService = new ProdutoService();
         List<Produto> produtos = new ArrayList<Produto>();
 
-        produtos.add(p1);
-        produtos.add(p2);
+        produtos = produtoService.listar();
 
         return produtos;
     }
@@ -47,11 +43,11 @@ public class ProdutoController {
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     Produto cadastrar(@RequestBody Produto newProduto) {
-        
+
         ProdutoService produtoService = new ProdutoService();
-        
+
         Produto produtoCriado = produtoService.cadastrar(newProduto);
-        
+
         return produtoCriado;
     }
 
