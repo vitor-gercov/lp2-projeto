@@ -63,7 +63,7 @@ Para rodar a API localmente em `localhost:8080`
               "valorEtiqueta": 233.2,
               "valorSugerido": 233.2,
               "localCompra": "Estados test",
-              "dataEntrega": 23/04/1994 23:00:01
+              "dataEntrega": 2020-09-05T22:33:07
           },...]
       ```
   * **Error Response:**
