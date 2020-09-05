@@ -10,14 +10,13 @@ import mtruck.api.entities.Produto;
 
 /**
  *
- * @author GERU\christian.seki
+ * @author chseki
  */
-public class CadastraProdutoService {
-
-    public Produto executa(Produto p) {
-            ProdutoDAO dao = new ProdutoDAO();
-            Produto produtoSalvo = dao.salvar(p);
-            
-            return produtoSalvo;
+public class ProdutoService {
+    public Produto cadastrar(Produto p){
+        ProdutoDAO dao = new ProdutoDAO();
+        Produto novoProduto = dao.salvar(p);
+        
+        return novoProduto;
     }
 }

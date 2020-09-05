@@ -5,19 +5,11 @@
  */
 package mtruck.api.controllers;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import mtruck.api.entities.Produto;
-import mtruck.api.services.CadastraProdutoService;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import mtruck.api.services.ProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProdutoController {
 
     @GetMapping
-    List<Produto> listar() throws FileNotFoundException, UnsupportedEncodingException {
+    List<Produto> listar() {
 
         Produto p1 = new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
 
@@ -57,9 +48,9 @@ public class ProdutoController {
     @PostMapping
     Produto cadastrar(@RequestBody Produto newProduto) {
         
-        CadastraProdutoService cadastroService = new CadastraProdutoService();
+        ProdutoService produtoService = new ProdutoService();
         
-        Produto produtoCriado = cadastroService.executa(newProduto);
+        Produto produtoCriado = produtoService.cadastrar(newProduto);
         
         return produtoCriado;
     }
