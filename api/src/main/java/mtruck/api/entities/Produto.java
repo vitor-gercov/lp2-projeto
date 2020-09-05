@@ -7,12 +7,13 @@ package mtruck.api.entities;
 
 import java.util.Date;
 
-
 /**
  *
  * @author chseki
  */
+
 public class Produto {
+
     private int id;
     private String categoria;
     private String marca;
@@ -26,7 +27,7 @@ public class Produto {
     private String localCompra;
     private Date dataEntrada;
 
-    public Produto(int id, String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorMargem, double valorSugerido, String localCompra, Date dataEntrada) {
+    public Produto(int id, String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorSugerido, String localCompra, Date dataEntrada) {
         this.id = id;
         this.categoria = categoria;
         this.marca = marca;
@@ -35,7 +36,7 @@ public class Produto {
         this.cor = cor;
         this.valorPago = valorPago;
         this.valorEtiqueta = valorEtiqueta;
-        this.valorMargem = valorMargem;
+        this.valorMargem = this.valorPago * 2;
         this.valorSugerido = valorSugerido;
         this.localCompra = localCompra;
         this.dataEntrada = dataEntrada;
@@ -78,7 +79,7 @@ public class Produto {
     }
 
     public double getValorMargem() {
-        return valorMargem;
+        return this.valorMargem;
     }
 
     public double getValorPago() {
@@ -136,8 +137,12 @@ public class Produto {
     public void setValorSugerido(double valorSugerido) {
         this.valorSugerido = valorSugerido;
     }
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return Integer.toString(this.id) + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','
+                + this.marca + ',' + this.localCompra + ',' + this.valorPago + ',' + this.valorEtiqueta + ','
+                + this.valorSugerido + ',' + this.valorMargem + ',' + this.dataEntrada.toString();
+        
+    }
 }

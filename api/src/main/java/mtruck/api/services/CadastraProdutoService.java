@@ -5,10 +5,19 @@
  */
 package mtruck.api.services;
 
+import mtruck.api.daos.ProdutoDAO;
+import mtruck.api.entities.Produto;
+
 /**
  *
  * @author GERU\christian.seki
  */
 public class CadastraProdutoService {
-    
+
+    public Produto executa(Produto p) {
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto produtoSalvo = dao.salvar(p);
+            
+            return produtoSalvo;
+    }
 }

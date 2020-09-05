@@ -13,8 +13,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import mtruck.api.daos.ProdutoDAO;
 import mtruck.api.entities.Produto;
+import mtruck.api.services.CadastraProdutoService;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -41,29 +41,32 @@ public class ProdutoController {
     @GetMapping
     List<Produto> listar() throws FileNotFoundException, UnsupportedEncodingException {
 
-        Produto p1 = new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 200.2, 350.2, "Rua João Gomes", new Date());
+        Produto p1 = new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
 
-        Produto p2 = new Produto(2, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 200.2, 350.2, "Rua João Gomes", new Date());
+        Produto p2 = new Produto(2, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
 
         List<Produto> produtos = new ArrayList<Produto>();
 
         produtos.add(p1);
         produtos.add(p2);
 
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        produtoDAO.criaTxt(p1);
         return produtos;
     }
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     Produto cadastrar(@RequestBody Produto newProduto) {
-        return newProduto;
+        
+        CadastraProdutoService cadastroService = new CadastraProdutoService();
+        
+        Produto produtoCriado = cadastroService.executa(newProduto);
+        
+        return produtoCriado;
     }
 
     @GetMapping("/{id}")
     Produto pesquisar(@PathVariable int id) {
-        return new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 200.2, 350.2, "Rua João Gomes", new Date());
+        return new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
     }
 
     @PatchMapping("/{id}")

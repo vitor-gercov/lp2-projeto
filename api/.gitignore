@@ -4,6 +4,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+estoque.txt
+
 ### STS ###
 .apt_generated
 .classpath
