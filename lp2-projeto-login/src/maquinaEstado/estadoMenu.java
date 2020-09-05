@@ -10,5 +10,9 @@ package maquinaEstado;
  * @author oseas
  */
 public class estadoMenu extends maquinaEstado{
-    
+     @Override
+    public boolean
+    executa(){
+        return false;
+    }
 }

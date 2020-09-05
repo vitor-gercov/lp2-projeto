@@ -9,6 +9,25 @@ package maquinaEstado;
  *
  * @author oseas
  */
-public class enumEstado {
+public enum enumEstado{
+ 
+    EDITA_PRODUTO(new estadoEditaProduto()),
     
+    EXCLUI_PRODUTO(new estadoExcluiProduto()),
+    
+    MENU(new estadoMenu()),
+    
+    REGISTRA_PRODUTO(new estadoRegistroProduto()),
+    
+    SELECIONA_PRODUTO(new estadoSelecionaProduto());
+ 
+    private final maquinaEstado estado;
+    
+    enumEstado(maquinaEstado estado) {
+        this.estado = estado;
+    }
+ 
+    public maquinaEstado getEstadoMaquina() {
+        return estado;
+    }
 }

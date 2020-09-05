@@ -10,7 +10,9 @@ package maquinaEstado;
  * @author oseas
  */
 public class estadoSelecionaProduto extends maquinaEstado{
-    @Override()
+     @Override
+    public boolean
     executa(){
+        return false;
     }
 }
