@@ -15,9 +15,11 @@ public interface DAO<T> {
     
     List<T> listar();
     
-    T salvar(T t);
+    void salvar(T t);
     
-    T pesquisar(int id);
+    T pesquisar(String codigo);
     
-    boolean deletar(int id);
+    void deletar(String codigo);
+    
+    void editar(String codigo);
 }

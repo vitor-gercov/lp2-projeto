@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 
 public class Produto {
 
-    private int id;
+    private String id;
     private String categoria;
     private String marca;
     private String tamanho;
@@ -29,7 +29,7 @@ public class Produto {
     private String localCompra;
     private Date dataEntrada;
 
-    public Produto(int id, String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorSugerido, String localCompra, Date dataEntrada) {
+    public Produto(String id,String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorSugerido, String localCompra, Date dataEntrada) {
         this.id = id;
         this.categoria = categoria;
         this.marca = marca;
@@ -52,9 +52,9 @@ public class Produto {
         return cor;
     }
     
-    public String getDataEntradaString(){
+    private String getDataEntradaString(){
         DateFormat formataData = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-   
+           
         String dataFormatada = formataData.format(this.dataEntrada);
         return dataFormatada;
     }
@@ -67,7 +67,7 @@ public class Produto {
         return descricao;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -115,7 +115,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -149,9 +149,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return Integer.toString(this.id) + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','
+        return this.id + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','
                 + this.marca + ',' + this.localCompra + ',' + this.valorPago + ',' + this.valorEtiqueta + ','
-                + this.valorSugerido + ',' + this.valorMargem + ',' + this.getDataEntradaString();
-        
+                + this.valorSugerido + ',' + this.valorMargem + ',' + this.getDataEntradaString();   
     }
 }

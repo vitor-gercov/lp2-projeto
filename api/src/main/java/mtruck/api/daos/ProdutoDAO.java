@@ -36,7 +36,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
     @Override
     public List<Produto> listar() {
-        List<Produto> produtos = new ArrayList<Produto>();
+        List<Produto> produtos = new ArrayList<>();
         File file = new File("estoque.txt");
 
         if (file.exists()) {
@@ -47,7 +47,7 @@ public class ProdutoDAO implements DAO<Produto> {
                     
                     if(campos[0].contains("id")) continue;
                     
-                    int id = Integer.parseInt(campos[0]);
+                    String id = campos[0];
                     String categoria = campos[1];
                     String tamanho = campos[2];
                     String descricao = campos[3];
@@ -77,7 +77,7 @@ public class ProdutoDAO implements DAO<Produto> {
     }
 
     @Override
-    public Produto salvar(Produto produto) {
+    public void salvar(Produto produto) {
         try {
             File file = new File("estoque.txt");
 
@@ -95,21 +95,24 @@ public class ProdutoDAO implements DAO<Produto> {
                 pw.println(produto.toString());
                 pw.close();
             }
-            return produto;
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
-            return null;
         }
     }
 
     @Override
-    public boolean deletar(int id) {
+    public void deletar(String codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Produto pesquisar(int id) {
+    public Produto pesquisar(String codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void editar(String codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

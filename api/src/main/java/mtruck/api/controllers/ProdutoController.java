@@ -31,9 +31,8 @@ public class ProdutoController {
 
     @GetMapping
     List<Produto> listar() {
-
         ProdutoService produtoService = new ProdutoService();
-        List<Produto> produtos = new ArrayList<Produto>();
+        List<Produto> produtos = new ArrayList<>();
 
         produtos = produtoService.listar();
 
@@ -42,22 +41,20 @@ public class ProdutoController {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
-    Produto cadastrar(@RequestBody Produto newProduto) {
-
+    void cadastrar(@RequestBody Produto newProduto) {
+        
         ProdutoService produtoService = new ProdutoService();
 
-        Produto produtoCriado = produtoService.cadastrar(newProduto);
-
-        return produtoCriado;
+        produtoService.cadastrar(newProduto);
     }
-
+    
     @GetMapping("/{id}")
-    Produto pesquisar(@PathVariable int id) {
-        return new Produto(1, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
+    Produto pesquisar(@PathVariable String id) {
+        return new Produto(id, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
     }
 
     @PatchMapping("/{id}")
-    Produto editar(@RequestBody Produto newProduto, @PathVariable int id) {
+    Produto editar(@RequestBody Produto newProduto, @PathVariable String id) {
         newProduto.setId(id);
         return newProduto;
     }
