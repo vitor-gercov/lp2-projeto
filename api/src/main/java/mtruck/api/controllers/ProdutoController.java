@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author GERU\christian.seki
  */
-@RequestMapping("/produto")
+@RequestMapping("/produtos")
 @RestController
 public class ProdutoController {
 
