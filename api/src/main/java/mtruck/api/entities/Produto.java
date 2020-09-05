@@ -6,6 +6,8 @@
 package mtruck.api.entities;
 
 import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -48,6 +50,13 @@ public class Produto {
 
     public String getCor() {
         return cor;
+    }
+    
+    public String getDataEntradaString(){
+        DateFormat formataData = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+   
+        String dataFormatada = formataData.format(this.dataEntrada);
+        return dataFormatada;
     }
 
     public Date getDataEntrada() {
@@ -142,7 +151,7 @@ public class Produto {
     public String toString() {
         return Integer.toString(this.id) + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','
                 + this.marca + ',' + this.localCompra + ',' + this.valorPago + ',' + this.valorEtiqueta + ','
-                + this.valorSugerido + ',' + this.valorMargem + ',' + this.dataEntrada.toString();
+                + this.valorSugerido + ',' + this.valorMargem + ',' + this.getDataEntradaString();
         
     }
 }
