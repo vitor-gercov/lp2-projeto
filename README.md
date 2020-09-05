@@ -53,7 +53,7 @@ Para rodar a API localmente em `localhost:8080`
 
       ```json
           [{
-              "id": 12,
+              "id": "123e4567-e89b-12d3-a456-556642440000",
               "categoria":"test",
               "marca": "marca",
               "tamanho": "M",
