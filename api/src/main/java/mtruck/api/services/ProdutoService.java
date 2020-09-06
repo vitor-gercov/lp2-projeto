@@ -19,45 +19,48 @@ import org.springframework.web.server.ResponseStatusException;
  */
 public class ProdutoService {
 
+    public void cadastrar(Produto p) throws ResponseStatusException {
 
-    public void cadastrar(Produto p) {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
 
-        ProdutoDAO dao = new ProdutoDAO();
+            p.setId(UUID.randomUUID().toString());
 
-        p.setId(UUID.randomUUID().toString());
+            if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
+                throw new Exception("Valor de Categoria inválido!");
+            }
+            if (p.getMarca().isEmpty() || p.getMarca() == null) {
+                throw new Exception("Valor de Marca inválido!");
+            }
+            if (p.getTamanho().isEmpty() || p.getTamanho() == null) {
+                throw new Exception("Valor de Tamanho inválido!");
+            }
+            if (p.getDescricao().isEmpty() || p.getDescricao() == null) {
+                throw new Exception("Valor de Descrição inválido!");
+            }
+            if (p.getCor().isEmpty() || p.getCor() == null) {
+                throw new Exception("Valor de Cor inválido!");
+            }
+            if (p.getLocalCompra().isEmpty() || p.getLocalCompra() == null) {
+                throw new Exception("Valor de Local de compra inválido!");
+            }
+            if (p.getDataEntrada() == null) {
+                throw new Exception("Valor de Data de Entrada inválido!");
+            }
+            if (p.getValorPago() == 0) {
+                throw new Exception("Valor de Valor Pago inválido!");
+            }
+            if (p.getValorEtiqueta() == 0) {
+                throw new Exception("Valor de Valor de Etiqueta inválido!");
+            }
+            if (p.getValorSugerido() == 0) {
+                throw new Exception("Valor de Valor Sugerido inválido!");
+            }
 
-        if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Categoria inválido!");
+            dao.salvar(p);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
-        if (p.getMarca().isEmpty() || p.getMarca() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Marca inválido!");
-        }
-        if (p.getTamanho().isEmpty() || p.getTamanho() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Tamanho inválido!");
-        }
-        if (p.getDescricao().isEmpty() || p.getDescricao() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Descrição inválido!");
-        }
-        if (p.getCor().isEmpty() || p.getCor() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Cor inválido!");
-        }
-        if (p.getLocalCompra().isEmpty() || p.getLocalCompra() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Local de compra inválido!");
-        }
-        if (p.getDataEntrada()== null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Data de Entrada inválido!");
-        }
-        if (p.getValorPago() == 0){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Valor Pago inválido!");
-        }
-        if (p.getValorEtiqueta() == 0){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Valor de Etiqueta inválido!");
-        }
-        if (p.getValorSugerido() == 0){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Valor Sugerido inválido!");
-        }
-
-        dao.salvar(p);
 
     }
 
@@ -78,13 +81,16 @@ public class ProdutoService {
 
     }
 
-    public Produto pesquisar(String id) {
-        ProdutoDAO dao = new ProdutoDAO();
-        Produto produto = dao.pesquisar(id);
-        if(produto.getId() == null)
-        {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
+    public Produto pesquisar(String id) throws ResponseStatusException {
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto produto = dao.pesquisar(id);
+            if (produto.getId() == null) {
+                throw new Exception("Produto não encontrado");
+            }
+            return produto;
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         }
-        return produto;
     }
 }
