@@ -6,8 +6,8 @@
 package mtruck.api.controllers;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import mtruck.api.entities.Produto;
 import mtruck.api.services.ProdutoService;
 import org.springframework.http.HttpStatus;
@@ -57,7 +57,7 @@ public class ProdutoController {
     }
 
     @PatchMapping("/{id}")
-    Produto editar(@RequestBody Produto newProduto, @PathVariable String id) {
+    Produto editar(@RequestBody Produto newProduto, @PathVariable UUID id) {
         newProduto.setId(id);
         return newProduto;
     }

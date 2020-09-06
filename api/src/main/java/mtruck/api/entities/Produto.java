@@ -8,6 +8,7 @@ package mtruck.api.entities;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 
 public class Produto {
 
-    private String id;
+    private UUID id;
     private String categoria;
     private String marca;
     private String tamanho;
@@ -35,7 +36,7 @@ public class Produto {
     }
     
 
-    public Produto(String id,String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorSugerido, String localCompra, Date dataEntrada) {
+    public Produto(UUID id,String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorSugerido, String localCompra, Date dataEntrada) {
         this.id = id;
         this.categoria = categoria;
         this.marca = marca;
@@ -73,7 +74,7 @@ public class Produto {
         return descricao;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -121,7 +122,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -155,7 +156,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return this.id + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','
+        return this.id.toString() + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','
                 + this.marca + ',' + this.localCompra + ',' + this.valorPago + ',' + this.valorEtiqueta + ','
                 + this.valorSugerido + ',' + this.valorMargem + ',' + this.getDataEntradaString();   
     }

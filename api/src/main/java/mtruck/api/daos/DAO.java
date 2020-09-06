@@ -6,6 +6,7 @@
 package mtruck.api.daos;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -17,7 +18,7 @@ public interface DAO<T> {
     
     void salvar(T t);
     
-    T pesquisar(String codigo);
+    T pesquisar(UUID codigo);
     
     void deletar(String codigo);
     

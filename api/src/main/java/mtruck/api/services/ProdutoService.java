@@ -23,8 +23,8 @@ public class ProdutoService {
 
         try {
             ProdutoDAO dao = new ProdutoDAO();
-
-            p.setId(UUID.randomUUID().toString());
+            
+            System.out.println(p.getId().toString());
 
             if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
                 throw new Exception("Valor de Categoria inválido!");
@@ -81,7 +81,7 @@ public class ProdutoService {
 
     }
 
-    public Produto pesquisar(String id) throws ResponseStatusException {
+    public Produto pesquisar(UUID id) throws ResponseStatusException {
         try {
             ProdutoDAO dao = new ProdutoDAO();
             Produto produto = dao.pesquisar(id);

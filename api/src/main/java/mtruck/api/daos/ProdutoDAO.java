@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mtruck.api.entities.Produto;
@@ -49,7 +50,7 @@ public class ProdutoDAO implements DAO<Produto> {
                         continue;
                     }
 
-                    String id = campos[0];
+                    UUID id = UUID.fromString(campos[0]);
                     String categoria = campos[1];
                     String tamanho = campos[2];
                     String descricao = campos[3];
@@ -109,7 +110,7 @@ public class ProdutoDAO implements DAO<Produto> {
     }
 
     @Override
-    public Produto pesquisar(String codigo) {
+    public Produto pesquisar(UUID codigo) {
 
         File file = new File("estoque.txt");
         Produto produto = new Produto();
@@ -120,7 +121,7 @@ public class ProdutoDAO implements DAO<Produto> {
                 while ((line = br.readLine()) != null) {
                     String[] campos = line.split(",");
                     //campo[] possui o Id do produto na posição 0
-                    if (campos[0].contains(codigo)) {
+                    if (campos[0].contains(codigo.toString())) {
                         String categoria = campos[1];
                         String tamanho = campos[2];
                         String descricao = campos[3];
