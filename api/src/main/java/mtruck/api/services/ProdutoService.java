@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.UUID;
 import mtruck.api.daos.ProdutoDAO;
 import mtruck.api.entities.Produto;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -17,12 +19,53 @@ import mtruck.api.entities.Produto;
  */
 public class ProdutoService {
 
+<<<<<<< Updated upstream
     public void cadastrar(Produto p) {
+=======
+    public void cadastrar(Produto p) throws ResponseStatusException {
+
+>>>>>>> Stashed changes
         ProdutoDAO dao = new ProdutoDAO();
 
         p.setId(UUID.randomUUID().toString());
 
+<<<<<<< Updated upstream
         dao.salvar(p);
+=======
+        if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Categoria inválido!");
+        }
+        if (p.getMarca().isEmpty() || p.getMarca() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Marca inválido!");
+        }
+        if (p.getTamanho().isEmpty() || p.getTamanho() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Tamanho inválido!");
+        }
+        if (p.getDescricao().isEmpty() || p.getDescricao() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Descrição inválido!");
+        }
+        if (p.getCor().isEmpty() || p.getCor() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Cor inválido!");
+        }
+        if (p.getLocalCompra().isEmpty() || p.getLocalCompra() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Local de compra inválido!");
+        }
+        if (p.getDataEntrada()== null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Data de Entrada inválido!");
+        }
+        if (p.getValorPago() == 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Valor Pago inválido!");
+        }
+        if (p.getValorEtiqueta() == 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Valor de Etiqueta inválido!");
+        }
+        if (p.getValorSugerido() == 0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Valor Sugerido inválido!");
+        }
+
+        dao.salvar(p);
+
+>>>>>>> Stashed changes
     }
 
     public List<Produto> listar() {
@@ -43,6 +86,16 @@ public class ProdutoService {
     }
 
     public Produto pesquisar(String id) {
+<<<<<<< Updated upstream
         return null;
+=======
+        ProdutoDAO dao = new ProdutoDAO();
+        Produto produto = dao.pesquisar(id);
+        if(produto.getId() == null)
+        {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
+        }
+        return produto;
+>>>>>>> Stashed changes
     }
 }
