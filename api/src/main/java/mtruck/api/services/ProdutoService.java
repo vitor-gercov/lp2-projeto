@@ -75,7 +75,7 @@ public class ProdutoService {
 
     }
 
-    public void deletar(UUID id) {
+    public void deletar(UUID id) throws ResponseStatusException {
         try{
             ProdutoDAO dao = new ProdutoDAO();
             dao.deletar(id);
