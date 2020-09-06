@@ -71,8 +71,9 @@ public class ProdutoService {
         return produtos;
     }
 
-    public void editar(String id) {
-
+    public void editar(Produto p) {
+        ProdutoDAO dao = new ProdutoDAO();
+        dao.editar(p);
     }
 
     public void deletar(UUID id) throws ResponseStatusException {

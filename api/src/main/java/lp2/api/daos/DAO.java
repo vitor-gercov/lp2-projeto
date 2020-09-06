@@ -7,6 +7,7 @@ package lp2.api.daos;
 
 import java.util.List;
 import java.util.UUID;
+import lp2.api.entities.Produto;
 
 /**
  *
@@ -22,5 +23,5 @@ public interface DAO<T> {
     
     void deletar(UUID codigo);
     
-    void editar(UUID codigo);
+    void editar(Produto produto);
 }

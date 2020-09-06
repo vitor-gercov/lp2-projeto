@@ -57,8 +57,7 @@ public class ProdutoController {
     }
 
     @PatchMapping("/{id}")
-    Produto editar(@RequestBody Produto newProduto, @PathVariable UUID id) {
-        newProduto.setId(id);
+    Produto editar(@RequestBody Produto newProduto) {
         return newProduto;
     }
 

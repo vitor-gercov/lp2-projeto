@@ -209,7 +209,7 @@ public class ProdutoDAO implements DAO<Produto> {
     }
 
     @Override
-    public void editar(UUID codigo) {
+    public void editar(Produto produto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
