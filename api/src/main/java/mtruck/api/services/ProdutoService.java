@@ -24,8 +24,6 @@ public class ProdutoService {
         try {
             ProdutoDAO dao = new ProdutoDAO();
             
-            System.out.println(p.getId().toString());
-
             if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
                 throw new Exception("Valor de Categoria inválido!");
             }
@@ -85,9 +83,11 @@ public class ProdutoService {
         try {
             ProdutoDAO dao = new ProdutoDAO();
             Produto produto = dao.pesquisar(id);
+            
             if (produto.getId() == null) {
                 throw new Exception("Produto não encontrado");
             }
+            
             return produto;
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());

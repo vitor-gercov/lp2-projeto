@@ -49,7 +49,7 @@ public class ProdutoController {
     }
     
     @GetMapping("/{id}")
-    Produto pesquisar(@PathVariable String id) {
+    Produto pesquisar(@PathVariable UUID id) {
 
         ProdutoService produtoService = new ProdutoService();
         Produto produto = produtoService.pesquisar(id);
