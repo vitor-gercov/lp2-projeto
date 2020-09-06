@@ -46,10 +46,13 @@ public class ProdutoDAO implements DAO<Produto> {
                     String[] campos = line.split(",");
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     
                     if(campos[0].contains("id")) continue;
                     
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -58,6 +61,9 @@ public class ProdutoDAO implements DAO<Produto> {
                     }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -124,8 +130,11 @@ public class ProdutoDAO implements DAO<Produto> {
     public Produto pesquisar(String codigo) {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         File file = new File("estoque.txt");
@@ -180,6 +189,9 @@ public class ProdutoDAO implements DAO<Produto> {
         }
         return produto;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

@@ -21,7 +21,12 @@ public class ProdutoService {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void cadastrar(Produto p) {
+=======
+    public void cadastrar(Produto p) throws ResponseStatusException {
+
+>>>>>>> Stashed changes
 =======
     public void cadastrar(Produto p) throws ResponseStatusException {
 
@@ -36,8 +41,11 @@ public class ProdutoService {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         dao.salvar(p);
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
@@ -74,6 +82,9 @@ public class ProdutoService {
         dao.salvar(p);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -99,8 +110,11 @@ public class ProdutoService {
     public Produto pesquisar(String id) {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         return null;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         ProdutoDAO dao = new ProdutoDAO();
@@ -111,6 +125,9 @@ public class ProdutoService {
         }
         return produto;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
