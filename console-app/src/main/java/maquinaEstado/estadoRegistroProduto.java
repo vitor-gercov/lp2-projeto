@@ -62,7 +62,7 @@ public class estadoRegistroProduto extends maquinaEstado{
              RestService api = new RestService(new RestTemplateBuilder());
              
             System.out.println(novoProduto);
-            Produto resposta = api.createPostWithObject(novoProduto);
+            Produto resposta = api.postProduct(novoProduto);
             System.out.println(resposta);
              return false;
          } catch (ParseException ex) {
