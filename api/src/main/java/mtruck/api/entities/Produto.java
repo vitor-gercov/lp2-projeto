@@ -29,25 +29,12 @@ public class Produto {
     private String localCompra;
     private Date dataEntrada;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     public Produto(){
         
     }
     
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
     public Produto(String id,String categoria, String marca, String tamanho, String descricao, String cor, double valorPago, double valorEtiqueta, double valorSugerido, String localCompra, Date dataEntrada) {
         this.id = id;
         this.categoria = categoria;

@@ -50,25 +50,10 @@ public class ProdutoController {
     
     @GetMapping("/{id}")
     Produto pesquisar(@PathVariable String id) {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        return new Produto(id, "Roupa", "Playboy", "M", "Blusa Gola Polo", "Preto", 200.2, 245.4, 350.2, "Rua João Gomes", new Date());
-=======
+
         ProdutoService produtoService = new ProdutoService();
         Produto produto = produtoService.pesquisar(id);
         return produto;
->>>>>>> Stashed changes
-=======
-        ProdutoService produtoService = new ProdutoService();
-        Produto produto = produtoService.pesquisar(id);
-        return produto;
->>>>>>> Stashed changes
-=======
-        ProdutoService produtoService = new ProdutoService();
-        Produto produto = produtoService.pesquisar(id);
-        return produto;
->>>>>>> Stashed changes
     }
 
     @PatchMapping("/{id}")
