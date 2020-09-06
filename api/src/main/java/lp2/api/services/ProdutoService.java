@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mtruck.api.services;
+package lp2.api.services;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import mtruck.api.daos.ProdutoDAO;
-import mtruck.api.entities.Produto;
+import lp2.api.daos.ProdutoDAO;
+import lp2.api.entities.Produto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 

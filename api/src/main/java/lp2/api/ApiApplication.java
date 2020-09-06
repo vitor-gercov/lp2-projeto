@@ -1,4 +1,4 @@
-package mtruck.api;
+package lp2.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

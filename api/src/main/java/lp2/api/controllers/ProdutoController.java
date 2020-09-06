@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mtruck.api.controllers;
+package lp2.api.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import mtruck.api.entities.Produto;
-import mtruck.api.services.ProdutoService;
+import lp2.api.entities.Produto;
+import lp2.api.services.ProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
