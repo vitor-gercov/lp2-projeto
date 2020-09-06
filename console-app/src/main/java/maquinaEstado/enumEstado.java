@@ -19,7 +19,9 @@ public enum enumEstado{
     
     REGISTRA_PRODUTO(new estadoRegistroProduto()),
     
-    SELECIONA_PRODUTO(new estadoSelecionaProduto());
+    SELECIONA_PRODUTO(new estadoSelecionaProduto()),
+
+    LISTA_PRODUTO(new estadoListaProduto());
  
     private final maquinaEstado estado;
     

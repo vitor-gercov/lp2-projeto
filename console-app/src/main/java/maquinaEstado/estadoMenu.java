@@ -23,6 +23,7 @@ public class estadoMenu extends maquinaEstado{
         System.out.println("2 - Editar produto");
         System.out.println("3 - Seleciona Produto");
         System.out.println("4 - Excluir produto");
+        System.out.println("5 - Listar produto");
         System.out.println("0 - Sair");
         Scanner scan = new Scanner(System.in);
         int opcao = scan.nextInt();
@@ -42,6 +43,9 @@ public class estadoMenu extends maquinaEstado{
                 break;
             case 4:
                 Menu.estadoConsole = enumEstado.EXCLUI_PRODUTO.getEstadoMaquina();
+                break;
+            case 5:
+                Menu.estadoConsole = enumEstado.LISTA_PRODUTO.getEstadoMaquina();
                 break;
         }
         return sair;
