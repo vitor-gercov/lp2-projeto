@@ -75,8 +75,13 @@ public class ProdutoService {
 
     }
 
-    public void deletar(String id) {
-
+    public void deletar(UUID id) {
+        try{
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.deletar(id);
+        }catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
+        }
     }
 
     public Produto pesquisar(UUID id) throws ResponseStatusException {

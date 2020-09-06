@@ -8,6 +8,7 @@ package mtruck.api.daos;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,11 +17,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mtruck.api.entities.Produto;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 /**
  *
@@ -105,8 +109,47 @@ public class ProdutoDAO implements DAO<Produto> {
     }
 
     @Override
-    public void deletar(String codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletar(UUID codigo) {
+        List<String> produtos = new ArrayList<>();
+        File file = new File("estoque.txt");
+        boolean existe = false;
+        
+        if (file.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] campos = line.split(",");
+
+                    if (campos[0].contains(codigo.toString())) {
+                        existe = true;
+                        continue;
+                    }
+
+                    produtos.add(line);
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+            }
+            if (!existe) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe no estoque !");
+            }
+            try {
+                Iterator i = produtos.iterator();
+                PrintWriter pw = new PrintWriter(new File("estoque.txt"));
+                
+                while (i.hasNext()) {
+                    pw.println(i.next().toString());
+                }
+
+                pw.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        else {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe no estoque !");
+        }
     }
 
     @Override
@@ -117,7 +160,7 @@ public class ProdutoDAO implements DAO<Produto> {
         if (file.exists()) {
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 String line;
-                
+
                 while ((line = br.readLine()) != null) {
                     String[] campos = line.split(",");
                     //campo[] possui o Id do produto na posição 0
@@ -134,7 +177,7 @@ public class ProdutoDAO implements DAO<Produto> {
                         double valorMargem = Double.parseDouble(campos[10]);
                         SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
                         Date dataEntrada = formataData.parse(campos[11]);
-                        
+
                         //Seta os valores em produtos
                         produto.setId(codigo);
                         produto.setCategoria(categoria);
@@ -148,11 +191,11 @@ public class ProdutoDAO implements DAO<Produto> {
                         produto.setValorSugerido(valorSugerido);
                         produto.setDataEntrada(dataEntrada);
                         produto.setValorMargem(valorMargem);
-                        
+
                         break;
-                    }     
+                    }
                 }
-                
+
             } catch (IOException e) {
                 System.out.println("An error occurred.");
                 e.printStackTrace();
@@ -166,7 +209,7 @@ public class ProdutoDAO implements DAO<Produto> {
     }
 
     @Override
-    public void editar(String codigo) {
+    public void editar(UUID codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

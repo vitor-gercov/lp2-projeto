@@ -20,7 +20,7 @@ public interface DAO<T> {
     
     T pesquisar(UUID codigo);
     
-    void deletar(String codigo);
+    void deletar(UUID codigo);
     
-    void editar(String codigo);
+    void editar(UUID codigo);
 }
