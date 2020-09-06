@@ -20,7 +20,12 @@ import org.springframework.web.server.ResponseStatusException;
 public class ProdutoService {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void cadastrar(Produto p) {
+=======
+    public void cadastrar(Produto p) throws ResponseStatusException {
+
+>>>>>>> Stashed changes
 =======
     public void cadastrar(Produto p) throws ResponseStatusException {
 
@@ -30,8 +35,11 @@ public class ProdutoService {
         p.setId(UUID.randomUUID().toString());
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         dao.salvar(p);
 =======
+=======
+>>>>>>> Stashed changes
         if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valor de Categoria inválido!");
         }
@@ -65,6 +73,9 @@ public class ProdutoService {
 
         dao.salvar(p);
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 
@@ -87,8 +98,11 @@ public class ProdutoService {
 
     public Produto pesquisar(String id) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         return null;
 =======
+=======
+>>>>>>> Stashed changes
         ProdutoDAO dao = new ProdutoDAO();
         Produto produto = dao.pesquisar(id);
         if(produto.getId() == null)
@@ -96,6 +110,9 @@ public class ProdutoService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado");
         }
         return produto;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }
