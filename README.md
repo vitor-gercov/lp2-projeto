@@ -111,3 +111,48 @@ Para rodar a API localmente em `localhost:8080`
 
   * **Code:** `400 Bad Request`   <br />
 </details>
+
+<details>
+  <summary>Pesquisar</summary>
+
+  ### Pesquisa um produto no `estoque` 
+
+  **URL**
+
+    /produtos/[id]
+
+  **Método**
+
+   `GET`
+
+  * **Exemplo de chamada:**
+    ```shell
+          curl -H "Content-type:application/json" \
+          http://localhost:8080/produtos/1234-abc
+      ```
+
+  * **Success Response:**
+   
+     **Body:**
+
+      ```json
+          {
+              "categoria":"test",
+              "marca": "marca",
+              "tamanho": "M",
+              "descricao": "description",
+              "cor":"Laranja",
+              "valorPago": 232.2,
+              "valorEtiqueta": 233.2,
+              "valorSugerido": 233.2,
+              "localCompra": "Estados test",
+              "dataEntrega": 23/04/1994 23:00:01
+          }
+      ```
+
+    * **Code:** 204 <br />
+
+  * **Error Response:**
+
+  * **Code:** `404 Not Found`   <br />
+</details>
