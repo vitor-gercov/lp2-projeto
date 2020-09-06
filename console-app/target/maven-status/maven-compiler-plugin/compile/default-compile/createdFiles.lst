@@ -1,0 +1,10 @@
+maquinaEstado/estadoEditaProduto.class
+business/RestService.class
+maquinaEstado/enumEstado.class
+dtos/Produto.class
+maquinaEstado/estadoExcluiProduto.class
+frontend/Menu.class
+maquinaEstado/estadoSelecionaProduto.class
+maquinaEstado/estadoMenu.class
+maquinaEstado/estadoRegistroProduto.class
+maquinaEstado/maquinaEstado.class
