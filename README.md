@@ -6,7 +6,7 @@ Trabalho requisitado pelo professor Gabriel Baptista, na linguagem Java
 
 ## Rodando a API localmente :book:
 
-Para rodar a API localmente em `localhost:8080`
+Para rodar a API localmente em **`localhost:8080`**
 
 - Windows
   
@@ -20,16 +20,16 @@ Para rodar a API localmente em `localhost:8080`
 
 ### Resumo
 
-  | Recurso       | Método                | Descrição                                                        |
-  | ------------- | ----------------------| -----------------------------------------------------------------|
-  | /produtos     | POST GET PATCH DELETE |  CRUD de um produto
+  | Recurso       | Método                        | Descrição                                                        |
+  | ------------- | ------------------------------| -----------------------------------------------------------------|
+  | `/produtos`   | `POST` `GET` `PATCH` `DELETE` |  Recurso responsável pelo CRUD do produto
   
 ### Produto
   
 <details>
   <summary>Listar</summary>
 
-  ### Retorna todos os produtos cadastrados no `estoque` 
+  ### Retorna todos os produtos cadastrados no estoque
 
   **URL**
 
@@ -42,8 +42,7 @@ Para rodar a API localmente em `localhost:8080`
   * **Exemplo de chamada:**
 
       ```shell
-          curl -H "Content-type:application/json" \
-          http://localhost:8080/produtos
+          curl http://localhost:8080/produtos
       ```
 
   * **Success Response:**
@@ -74,7 +73,7 @@ Para rodar a API localmente em `localhost:8080`
 <details>
   <summary>Cadastrar</summary>
 
-  ### Cadastra um produto no `estoque` 
+  ### Cadastra um produto no estoque
 
   **URL**
 
@@ -115,7 +114,7 @@ Para rodar a API localmente em `localhost:8080`
 <details>
   <summary>Pesquisar</summary>
 
-  ### Pesquisa um produto no `estoque` 
+  ### Pesquisa um produto no estoque
 
   **URL**
 
@@ -127,8 +126,7 @@ Para rodar a API localmente em `localhost:8080`
 
   * **Exemplo de chamada:**
     ```shell
-          curl -H "Content-type:application/json" \
-          http://localhost:8080/produtos/1234-abc
+          curl http://localhost:8080/produtos/1234-abc
       ```
 
   * **Success Response:**
@@ -156,3 +154,31 @@ Para rodar a API localmente em `localhost:8080`
 
   * **Code:** `404 Not Found`   <br />
 </details>
+
+<details>
+  <summary>Deletar</summary>
+
+  ### Deleta um produto do estoque
+
+  **URL**
+
+    /produtos/[id]
+
+  **Método**
+
+   `DELETE`
+
+  * **Exemplo de chamada:**
+    ```shell
+          curl http://localhost:8080/produtos/1234-abc
+      ```
+
+  * **Success Response:**
+   
+    * **Code:** 204 <br />
+
+  * **Error Response:**
+
+  * **Code:** `404 Not Found`   <br />
+</details>
+
