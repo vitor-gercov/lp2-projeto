@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.Produto;
+import dtos.Produto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 
 /**

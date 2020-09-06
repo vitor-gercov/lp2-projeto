@@ -10,9 +10,9 @@
 	</parent>
         
 	
-	<artifactId>Estoque</artifactId>
+	<artifactId>console-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Estoque</name>
+	<name>console-app</name>
 	<description>N1 Project</description>
 
 	<properties>

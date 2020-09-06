@@ -7,7 +7,7 @@ package business;
 
 import java.util.Collections;
 
-import models.Produto;
+import dtos.Produto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
