@@ -57,8 +57,9 @@ public class ProdutoController {
     }
 
     @PatchMapping("/{id}")
-    Produto editar(@RequestBody Produto newProduto) {
-        return newProduto;
+    void editar(@RequestBody Produto newProduto) {
+        ProdutoService produtoService = new ProdutoService();
+        produtoService.editar(newProduto);
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

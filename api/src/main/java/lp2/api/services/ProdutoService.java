@@ -23,7 +23,7 @@ public class ProdutoService {
 
         try {
             ProdutoDAO dao = new ProdutoDAO();
-            
+
             if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
                 throw new Exception("Valor de Categoria inválido!");
             }
@@ -72,15 +72,56 @@ public class ProdutoService {
     }
 
     public void editar(Produto p) {
-        ProdutoDAO dao = new ProdutoDAO();
-        dao.editar(p);
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            Produto produto = this.pesquisar(p.getId());
+            if (p.getId() == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe!");
+            }
+            if (p.getCategoria() == null) {
+                p.setCategoria(produto.getCategoria());
+            }
+            if (p.getMarca() == null) {
+                p.setMarca(produto.getMarca());
+            }
+            if (p.getTamanho()== null) {
+                p.setTamanho(produto.getTamanho());
+            }
+            if (p.getDescricao()== null) {
+                p.setDescricao(produto.getDescricao());
+            }
+            if (p.getCor()== null) {
+                p.setCor(produto.getCor());
+            }
+            if (p.getLocalCompra()== null) {
+                p.setLocalCompra(produto.getLocalCompra());
+            }
+            if (p.getDataEntrada()== null) {
+                p.setDataEntrada(produto.getDataEntrada());
+            }
+            if (p.getValorPago()== 0) {
+                p.setValorPago(produto.getValorPago());
+            }
+            if (p.getValorEtiqueta()== 0) {
+                p.setValorEtiqueta(produto.getValorEtiqueta());
+            }
+            if (p.getValorSugerido()== 0) {
+                p.setValorSugerido(produto.getValorSugerido());
+            }
+            if (p.getValorMargem()== 0) {
+                p.setValorMargem(produto.getValorMargem());
+            }
+            dao.editar(p);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
+        }
     }
 
     public void deletar(UUID id) throws ResponseStatusException {
-        try{
+        try {
             ProdutoDAO dao = new ProdutoDAO();
             dao.deletar(id);
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         }
     }
@@ -89,11 +130,11 @@ public class ProdutoService {
         try {
             ProdutoDAO dao = new ProdutoDAO();
             Produto produto = dao.pesquisar(id);
-            
+
             if (produto.getId() == null) {
                 throw new Exception("Produto não encontrado");
             }
-            
+
             return produto;
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());

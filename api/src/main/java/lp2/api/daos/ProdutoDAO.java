@@ -210,7 +210,46 @@ public class ProdutoDAO implements DAO<Produto> {
 
     @Override
     public void editar(Produto produto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<String> produtos = new ArrayList<>();
+        File file = new File("estoque.txt");
+        boolean existe = false;
+        
+        if (file.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] campos = line.split(",");
+
+                    if (campos[0].contains(produto.getId().toString())) {
+                        produtos.add(produto.toString());
+                        continue;
+                    }
+
+                    produtos.add(line);
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+            }
+            if (!existe) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe no estoque !");
+            }
+            try {
+                Iterator i = produtos.iterator();
+                PrintWriter pw = new PrintWriter(new File("estoque.txt"));
+                
+                while (i.hasNext()) {
+                    pw.println(i.next().toString());
+                }
+
+                pw.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        else {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe no estoque !");
+        }
     }
 
 }
