@@ -182,3 +182,32 @@ Para rodar a API localmente em **`localhost:8080`**
   * **Code:** `404 Not Found`   <br />
 </details>
 
+<details>
+  <summary>Editar</summary>
+
+  ### Edita um produto do estoque
+
+  **URL**
+
+    /produtos/[id]
+
+  **Método**
+
+   `PATCH`
+
+  * **Exemplo de chamada:**
+    ```shell
+            curl -H "Content-type:application/json" \
+                 http://localhost:8080/produtos/ae123-123ase \
+                 -d '{ "categoria": "Novo Campo", "marca": "Nova Marca" }'
+      ```
+      
+  * **Success Response:**
+   
+    * **Code:** 204 <br />
+
+  * **Error Response:**
+
+  * **Code:** `404 Not Found`   <br />
+</details>
+
