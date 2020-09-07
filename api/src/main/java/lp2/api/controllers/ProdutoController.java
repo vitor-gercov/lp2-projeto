@@ -55,11 +55,12 @@ public class ProdutoController {
         Produto produto = produtoService.pesquisar(id);
         return produto;
     }
-
+    
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PatchMapping("/{id}")
-    void editar(@RequestBody Produto newProduto) {
+    void editar(@RequestBody Produto newProduto, @PathVariable UUID id) {
         ProdutoService produtoService = new ProdutoService();
-        produtoService.editar(newProduto);
+        produtoService.editar(id,newProduto);
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

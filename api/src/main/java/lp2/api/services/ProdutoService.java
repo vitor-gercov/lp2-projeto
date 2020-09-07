@@ -71,11 +71,12 @@ public class ProdutoService {
         return produtos;
     }
 
-    public void editar(Produto p) {
+    public void editar(UUID id,Produto p) {
         try {
             ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = this.pesquisar(p.getId());
-            if (p.getId() == null) {
+            Produto produto = this.pesquisar(id);
+                
+            if (produto.getId().toString() == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe!");
             }
             if (p.getCategoria() == null) {
@@ -111,9 +112,11 @@ public class ProdutoService {
             if (p.getValorMargem()== 0) {
                 p.setValorMargem(produto.getValorMargem());
             }
+            
+            p.setId(id);
             dao.editar(p);
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         }
     }
 

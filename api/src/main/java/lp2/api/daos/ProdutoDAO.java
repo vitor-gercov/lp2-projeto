@@ -222,6 +222,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
                     if (campos[0].contains(produto.getId().toString())) {
                         produtos.add(produto.toString());
+                        existe = true;
                         continue;
                     }
 
