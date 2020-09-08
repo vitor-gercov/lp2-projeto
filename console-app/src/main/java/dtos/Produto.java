@@ -7,6 +7,7 @@ package dtos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.Date;
 public class Produto implements Serializable {
     
     //Variaveis
-    private String id;
+    private UUID id;
     private String categoria;
     private String marca;
     private String tamanho;
@@ -31,7 +32,7 @@ public class Produto implements Serializable {
     
     
     //Gets
-    public String getId() {
+    public UUID getId() {
         return id;
     }
     
@@ -78,7 +79,7 @@ public class Produto implements Serializable {
     
     
     //Sets
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

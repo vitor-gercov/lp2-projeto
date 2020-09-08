@@ -86,10 +86,11 @@ public class ProdutoDAO implements DAO<Produto> {
     @Override
     public void salvar(Produto produto) {
         try {
+            
             File file = new File("estoque.txt");
 
             if (file.exists()) {
-
+                
                 FileWriter fw = new FileWriter(file.getName(), true);
                 BufferedWriter buffer = new BufferedWriter(fw);
 
@@ -97,6 +98,7 @@ public class ProdutoDAO implements DAO<Produto> {
                 pw.println(produto.toString());
                 pw.close();
             } else {
+              
                 PrintWriter pw = new PrintWriter(new File("estoque.txt"));
                 pw.println(this.colunasTxt);
                 pw.println(produto.toString());

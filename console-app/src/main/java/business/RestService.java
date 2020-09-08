@@ -38,6 +38,10 @@ public class RestService {
         return this.restTemplate.getForObject(this.url, String.class);
     }
     
+    public String findProduct(String id){
+        return this.restTemplate.getForObject(this.url + "/" + id, String.class);
+    }
+    
     public Produto postProduct(Produto produto) {
 
         // create headers
@@ -58,7 +62,7 @@ public class RestService {
         return restTemplate.postForObject(this.url, entity, Produto.class);
     }
 
-    public void updatePost(Produto produto) {
+    public void updateProduct(String id,Produto produto) {
 
         // create headers
         HttpHeaders headers = new HttpHeaders();
@@ -74,7 +78,7 @@ public class RestService {
         HttpEntity<Produto> entity = new HttpEntity<>(putProduto, headers);
 
         // send PUT request to update post with `id` 10
-        this.restTemplate.put(this.url, entity, 10);
+        this.restTemplate.put(this.url + "/" + id, entity, id);
     }
 
     public void deleteProduct(String id) {

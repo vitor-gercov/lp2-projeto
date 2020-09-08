@@ -10,8 +10,6 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import dtos.Produto;
 import frontend.Menu;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -50,7 +48,6 @@ public class estadoRegistroProduto extends maquinaEstado {
             System.out.println("Valor da etiqueta:");
             novoProduto.setValorEtiqueta(entrada.nextDouble());
             entrada.nextLine();
-
             System.out.println("Local da compra:");
             novoProduto.setLocalCompra(entrada.nextLine());
             System.out.println("Data de entrega(dd/MM/yyyy):");

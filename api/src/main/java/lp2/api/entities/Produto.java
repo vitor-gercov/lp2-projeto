@@ -61,8 +61,9 @@ public class Produto {
     
     private String getDataEntradaString(){
         DateFormat formataData = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-           
+        
         String dataFormatada = formataData.format(this.dataEntrada);
+        System.out.println(this.dataEntrada);
         return dataFormatada;
     }
 
@@ -123,7 +124,12 @@ public class Produto {
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        if(id == null){
+            this.id = UUID.randomUUID();
+        }else{
+           this.id = id; 
+        }
+        
     }
 
     public void setLocalCompra(String localCompra) {
