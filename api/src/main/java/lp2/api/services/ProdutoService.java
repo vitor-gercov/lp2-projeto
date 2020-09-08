@@ -89,42 +89,41 @@ public class ProdutoService {
             if (produto.getId().toString() == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe!");
             }
-            if (p.getCategoria() == null) {
-                p.setCategoria(produto.getCategoria());
+            if (p.getCategoria() != null) {
+                produto.setCategoria(p.getCategoria());
             }
-            if (p.getMarca() == null) {
-                p.setMarca(produto.getMarca());
+            if (p.getMarca() != null) {
+                produto.setMarca(p.getMarca());
             }
-            if (p.getTamanho() == null) {
-                p.setTamanho(produto.getTamanho());
+            if (p.getTamanho() != null) {
+                produto.setTamanho(p.getTamanho());
             }
-            if (p.getDescricao() == null) {
-                p.setDescricao(produto.getDescricao());
+            if (p.getDescricao() != null) {
+                produto.setDescricao(p.getDescricao());
             }
-            if (p.getCor() == null) {
-                p.setCor(produto.getCor());
+            if (p.getCor() != null) {
+                produto.setCor(p.getCor());
             }
-            if (p.getLocalCompra() == null) {
-                p.setLocalCompra(produto.getLocalCompra());
+            if (p.getLocalCompra() != null) {
+                produto.setLocalCompra(p.getLocalCompra());
             }
-            if (p.getDataEntrada() == null) {
-                p.setDataEntrada(produto.getDataEntrada());
+            if (p.getDataEntrada() != null) {
+                produto.setDataEntrada(p.getDataEntrada());
             }
-            if (p.getValorPago() == 0) {
-                p.setValorPago(produto.getValorPago());
+            if (p.getValorPago() != 0) {
+                produto.setValorPago(p.getValorPago());
             }
-            if (p.getValorEtiqueta() == 0) {
-                p.setValorEtiqueta(produto.getValorEtiqueta());
+            if (p.getValorEtiqueta() != 0) {
+                produto.setValorEtiqueta(p.getValorEtiqueta());
             }
-            if (p.getValorSugerido() == 0) {
-                p.setValorSugerido(produto.getValorSugerido());
+            if (p.getValorSugerido() != 0) {
+                produto.setValorSugerido(p.getValorSugerido());
             }
-            if (p.getValorMargem() == 0) {
-                p.setValorMargem(produto.getValorMargem());
+            if (p.getValorMargem() != 0) {
+                produto.setValorMargem(p.getValorMargem());
             }
 
-            p.setId(id);
-            dao.editar(p);
+            dao.editar(produto);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         }
