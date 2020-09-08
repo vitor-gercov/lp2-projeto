@@ -64,7 +64,7 @@ public class ProdutoService {
 
                 throw new Exception("Valor de Valor Sugerido inválido!");
             }
-            p.setId(null);
+
             dao.salvar(p);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());

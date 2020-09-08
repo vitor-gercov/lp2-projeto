@@ -124,12 +124,7 @@ public class Produto {
     }
 
     public void setId(UUID id) {
-        if(id == null){
-            this.id = UUID.randomUUID();
-        }else{
-           this.id = id; 
-        }
-        
+      this.id = id;
     }
 
     public void setLocalCompra(String localCompra) {

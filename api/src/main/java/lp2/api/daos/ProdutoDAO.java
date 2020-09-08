@@ -88,6 +88,8 @@ public class ProdutoDAO implements DAO<Produto> {
         try {
             
             File file = new File("estoque.txt");
+            
+            produto.setId(UUID.randomUUID());
 
             if (file.exists()) {
                 
