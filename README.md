@@ -8,8 +8,6 @@ Trabalho requisitado pelo professor Gabriel Baptista, na linguagem Java.
 - Gerenciador de pacotes: `Maven`
 - Ambiente de desenvolvimento: `NetBeans v12.0`
 
-## Utilizando a interface console :computer:
-
 ## Rodando a API localmente :book:
 
 Para rodar a API localmente em **`localhost:8080`**
@@ -21,6 +19,12 @@ Para rodar a API localmente em **`localhost:8080`**
 - Linux/Mac
 
   No diretório raíz do projeto `cd api` e execute : `./mvnw spring-boot:run`
+
+## Console Docs :scroll:
+
+Para utilizar o console, primeiro é necessario subir a API localmente utilizando o comando "mvnw spring-boot:run" na pasta raiz da API, depois faça o build da aplicação utilizando a classe frontend.java como classe Main e selecione uma das opções do Menu.
+
+As opções de exclusão e edição só funcionarão se ja existir um produto cadastrado.
 
 ## API Docs :scroll:
 
