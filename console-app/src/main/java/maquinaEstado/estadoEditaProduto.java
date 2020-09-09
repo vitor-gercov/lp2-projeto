@@ -9,7 +9,6 @@ import business.RestService;
 import com.google.gson.Gson;
 import dtos.Produto;
 import frontend.Menu;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -73,8 +72,10 @@ public class estadoEditaProduto extends maquinaEstado {
 
             System.out.println("Digite 1 para editar o Tamanho ou qualquer outra coisa para ir para o próximo dado:");
             if ("1".equals(scan.nextLine())) {
-                System.out.println("Digite o valor");
-                produtoEditado.setTamanho(scan.nextLine());
+                System.out.println("Digite o valor do tamanho(P, M, G, GG):");
+                String tamanhoEntrada = scan.nextLine().toUpperCase();
+                EnumTamanhos tamanho = Enum.valueOf(EnumTamanhos.class, tamanhoEntrada);
+                produtoEditado.setTamanho(tamanho.getTamanho());
             }
 
             System.out.println("Digite 1 para editar a Descrição ou qualquer outra coisa para ir para o próximo dado:");
@@ -85,8 +86,10 @@ public class estadoEditaProduto extends maquinaEstado {
 
             System.out.println("Digite 1 para editar a Cor ou qualquer outra coisa para ir para o próximo dado:");
             if ("1".equals(scan.nextLine())) {
-                System.out.println("Digite o valor");
-                produtoEditado.setCor(scan.nextLine());
+                System.out.println("Digite o valor da cor(LARANJA,VERMELHO,ROSA,AMARELO,PRETO,BRANCO,VERDE):");
+                String corEntrada = scan.nextLine().toUpperCase();
+                EnumCores cor = Enum.valueOf(EnumCores.class, corEntrada);
+                produtoEditado.setCor(cor.getCor());
             }
 
             System.out.println("Digite 1 para editar o Valor Pago ou qualquer outra coisa para ir para o próximo dado:");
@@ -124,13 +127,14 @@ public class estadoEditaProduto extends maquinaEstado {
                 produtoEditado.setDataEntrega(dataDt);
             }
 
-            api.updateProduct(productId,produtoEditado);
-            
+            api.updateProduct(productId, produtoEditado);
+
             System.out.println("Produto Editado com sucesso");
             Menu.estadoConsole = enumEstado.MENU.getEstadoMaquina();
 
             return false;
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
+            System.out.println("Ocorreu um erro: " + ex.getMessage());
             return false;
         }
 

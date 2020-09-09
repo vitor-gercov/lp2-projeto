@@ -74,7 +74,7 @@ public class ProdutoService {
 
     public List<Produto> listar() {
         ProdutoDAO dao = new ProdutoDAO();
-        List<Produto> produtos = new ArrayList<Produto>();
+        List<Produto> produtos = new ArrayList<>();
 
         produtos = dao.listar();
 

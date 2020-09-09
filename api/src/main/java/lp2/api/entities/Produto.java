@@ -63,7 +63,6 @@ public class Produto {
         DateFormat formataData = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         
         String dataFormatada = formataData.format(this.dataEntrada);
-        System.out.println(this.dataEntrada);
         return dataFormatada;
     }
 

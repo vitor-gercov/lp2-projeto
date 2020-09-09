@@ -6,7 +6,6 @@
 package maquinaEstado;
 
 import business.RestService;
-import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
@@ -33,12 +32,20 @@ public class estadoRegistroProduto extends maquinaEstado {
             novoProduto.setCategoria(entrada.nextLine());
             System.out.println("Marca:");
             novoProduto.setMarca(entrada.nextLine());
+            
             System.out.println("Tamanho(P, M, G, GG):");
-            novoProduto.setTamanho(entrada.nextLine());
+            String tamanhoEntrada = entrada.nextLine().toUpperCase();
+            EnumTamanhos tamanho = Enum.valueOf(EnumTamanhos.class, tamanhoEntrada);
+            novoProduto.setTamanho(tamanho.getTamanho());
+            
             System.out.println("Descrição:");
             novoProduto.setDesc(entrada.nextLine());
-            System.out.println("Cor:");
-            novoProduto.setCor(entrada.nextLine());
+            
+            System.out.println("Cor(LARANJA,VERMELHO,ROSA,AMARELO,PRETO,BRANCO,VERDE):");
+            String corEntrada = entrada.nextLine().toUpperCase();         
+            EnumCores cor = Enum.valueOf(EnumCores.class, corEntrada);
+            novoProduto.setCor(cor.getCor());
+            
             System.out.println("Valor pago:");
             novoProduto.setValorPago(entrada.nextDouble());
             entrada.nextLine();
@@ -79,8 +86,8 @@ public class estadoRegistroProduto extends maquinaEstado {
             }
 
             return false;
-        } catch (ParseException ex) {
-            System.out.println("Ocorreu um erro");
+        } catch (Exception ex) {
+            System.out.println("Ocorreu um erro: "+ ex.getMessage());
 
             
             System.out.println("Deseja tentar novamente");
