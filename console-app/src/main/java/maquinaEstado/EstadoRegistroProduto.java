@@ -68,33 +68,17 @@ public class EstadoRegistroProduto extends MaquinaEstado {
             api.postProduct(novoProduto);
             
             System.out.println("Produto cadastrado com sucesso");
-
             System.out.println("Deseja cadastrar um novo produto");
-
             System.out.println("1 - Sim");
             System.out.println("2 - Não");
-
-            Scanner scan = new Scanner(System.in);
-            int opcao = scan.nextInt();
-            switch (opcao) {
-                case 1:
-                    Menu.estadoConsole = EnumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
-                    break;
-                case 2:
-                    Menu.estadoConsole = EnumEstado.MENU.getEstadoMaquina();
-                    break;
-            }
-
-            return false;
+            
         } catch (Exception ex) {
             System.out.println("Ocorreu um erro: "+ ex.getMessage());
-        }
-        finally {
             System.out.println("Deseja tentar novamente");
-
             System.out.println("1 - Sim");
             System.out.println("2 - Não");
-
+        }
+        finally {
             Scanner scan = new Scanner(System.in);
             int opcao = scan.nextInt();
             switch (opcao) {
