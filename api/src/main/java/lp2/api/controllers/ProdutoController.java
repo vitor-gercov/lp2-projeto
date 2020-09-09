@@ -8,6 +8,7 @@ package lp2.api.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import lp2.api.daos.ProdutoDAOtxt;
 import lp2.api.entities.Produto;
 import lp2.api.services.ProdutoService;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,9 @@ public class ProdutoController {
 
     @GetMapping
     List<Produto> listar() {
-        ProdutoService produtoService = new ProdutoService();
+        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+        
+        ProdutoService produtoService = new ProdutoService(daoTxt);
         List<Produto> produtos = new ArrayList<>();
 
         produtos = produtoService.listar();
@@ -43,16 +46,17 @@ public class ProdutoController {
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     void cadastrar(@RequestBody Produto newProduto) {
-  
-        ProdutoService produtoService = new ProdutoService();
+        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+        ProdutoService produtoService = new ProdutoService(daoTxt);
 
         produtoService.cadastrar(newProduto);
     }
     
     @GetMapping("/{id}")
     Produto pesquisar(@PathVariable UUID id) {
-
-        ProdutoService produtoService = new ProdutoService();
+        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();  
+        ProdutoService produtoService = new ProdutoService(daoTxt);
+        
         Produto produto = produtoService.pesquisar(id);
         return produto;
     }
@@ -60,14 +64,18 @@ public class ProdutoController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void editar(@RequestBody Produto newProduto, @PathVariable UUID id) {
-        ProdutoService produtoService = new ProdutoService();
+        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+        ProdutoService produtoService = new ProdutoService(daoTxt);
+        
         produtoService.editar(id,newProduto);
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     void deletar(@PathVariable UUID id) {
-        ProdutoService produtoService = new ProdutoService();
+        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+        ProdutoService produtoService = new ProdutoService(daoTxt);
+        
         produtoService.deletar(id);
     }
 }

@@ -8,7 +8,7 @@ package lp2.api.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import lp2.api.daos.ProdutoDAO;
+import lp2.api.daos.DAO;
 import lp2.api.entities.Produto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,11 +18,16 @@ import org.springframework.web.server.ResponseStatusException;
  * @author chseki
  */
 public class ProdutoService {
+    
+    private final DAO<Produto> produtoDAO ;
+    
+    public ProdutoService(DAO dao){
+        this.produtoDAO = dao;
+    }
 
     public void cadastrar(Produto p) throws ResponseStatusException {
 
         try {
-            ProdutoDAO dao = new ProdutoDAO();
 
             if (p.getCategoria().isEmpty() || p.getCategoria() == null) {
 
@@ -65,7 +70,7 @@ public class ProdutoService {
                 throw new Exception("Valor de Valor Sugerido inválido!");
             }
 
-            dao.salvar(p);
+            this.produtoDAO.salvar(p);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
@@ -73,18 +78,16 @@ public class ProdutoService {
     }
 
     public List<Produto> listar() {
-        ProdutoDAO dao = new ProdutoDAO();
         List<Produto> produtos = new ArrayList<>();
 
-        produtos = dao.listar();
+        produtos = this.produtoDAO.listar();
 
         return produtos;
     }
 
     public void editar(UUID id, Produto p) {
         try {
-            ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = this.pesquisar(id);
+            Produto produto = this.produtoDAO.pesquisar(id);
 
             if (produto.getId().toString() == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não existe!");
@@ -123,7 +126,7 @@ public class ProdutoService {
                 produto.setValorMargem(p.getValorMargem());
             }
 
-            dao.editar(produto);
+            this.produtoDAO.editar(produto);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         }
@@ -131,8 +134,7 @@ public class ProdutoService {
 
     public void deletar(UUID id) throws ResponseStatusException {
         try {
-            ProdutoDAO dao = new ProdutoDAO();
-            dao.deletar(id);
+            this.produtoDAO.deletar(id);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getLocalizedMessage());
         }
@@ -140,8 +142,7 @@ public class ProdutoService {
 
     public Produto pesquisar(UUID id) throws ResponseStatusException {
         try {
-            ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = dao.pesquisar(id);
+            Produto produto = this.produtoDAO.pesquisar(id);
 
             if (produto.getId() == null) {
                 throw new Exception("Produto não encontrado");

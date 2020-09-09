@@ -30,11 +30,11 @@ import org.springframework.web.server.ResponseStatusException;
  *
  * @author GERU\christian.seki
  */
-public class ProdutoDAO implements DAO<Produto> {
+public class ProdutoDAOtxt implements DAO<Produto> {
 
     private String colunasTxt;
 
-    public ProdutoDAO() {
+    public ProdutoDAOtxt() {
         this.colunasTxt = "id,categoria,tamanho,descricao,cor,marca,localCompra,valorPago,valorEtiqueta,valorSugerido,"
                 + "valorMargem,dataEntrada";
     }
@@ -77,7 +77,7 @@ public class ProdutoDAO implements DAO<Produto> {
                 e.printStackTrace();
                 return null;
             } catch (ParseException ex) {
-                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProdutoDAOtxt.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return produtos;
@@ -147,7 +147,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
                 pw.close();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProdutoDAOtxt.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
@@ -205,7 +205,7 @@ public class ProdutoDAO implements DAO<Produto> {
                 e.printStackTrace();
                 return null;
             } catch (ParseException ex) {
-                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProdutoDAOtxt.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
             }
         }
@@ -248,7 +248,7 @@ public class ProdutoDAO implements DAO<Produto> {
 
                 pw.close();
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ProdutoDAOtxt.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
