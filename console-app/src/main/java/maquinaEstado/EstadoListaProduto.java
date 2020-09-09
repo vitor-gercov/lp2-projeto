@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package maquinaEstado;
 
 import dtos.Produto;
@@ -18,26 +17,29 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
  *
  * @author Usuario
  */
-public class estadoListaProduto extends maquinaEstado{
-     @Override
-    public boolean
-    executa(){
-        
-        Gson g = new Gson();
+public class EstadoListaProduto extends MaquinaEstado {
 
-        RestService api = new RestService(new RestTemplateBuilder());
-        String listaProdutos = api.getProducts();  
-        
-        Produto[] converted = g.fromJson(listaProdutos, Produto[].class);
-        List<Produto> lista= Arrays.asList(converted);
-        
-        lista.forEach(item -> this.exibeDadosDoProduto(item));
-        
-        Menu.estadoConsole = enumEstado.MENU.getEstadoMaquina();
-        return false;
+    @Override
+    public boolean executa() {
+        try {
+            Gson g = new Gson();
+
+            RestService api = new RestService(new RestTemplateBuilder());
+            String listaProdutos = api.getProducts();
+
+            Produto[] converted = g.fromJson(listaProdutos, Produto[].class);
+            List<Produto> lista = Arrays.asList(converted);
+
+            lista.forEach(item -> this.exibeDadosDoProduto(item));
+        } catch (Exception ex) {
+            System.out.println("Erro ao listar: " + ex.getMessage());
+        } finally {
+            Menu.estadoConsole = EnumEstado.MENU.getEstadoMaquina();
+            return false;
+        }
     }
-    
-    public void exibeDadosDoProduto(Produto p){
+
+    public void exibeDadosDoProduto(Produto p) {
         System.out.println("///////////////////////////////");
         System.out.println("ID:");
         System.out.println(p.getId());
@@ -63,7 +65,7 @@ public class estadoListaProduto extends maquinaEstado{
         System.out.println(p.getLocalCompra());
         System.out.println("Data entrada:");
         System.out.println(p.getDataEntrada());
-        
+
         System.out.println("///////////////////////////////");
     }
 }

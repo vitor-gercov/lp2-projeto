@@ -20,7 +20,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
  *
  * @author oseas
  */
-public class estadoEditaProduto extends maquinaEstado {
+public class EstadoEditaProduto extends MaquinaEstado {
 
     @Override
     public boolean
@@ -36,7 +36,7 @@ public class estadoEditaProduto extends maquinaEstado {
 
             if (converted.length == 0) {
                 System.out.println("Não existe nenhum produto cadastrado");
-                Menu.estadoConsole = enumEstado.MENU.getEstadoMaquina();
+                Menu.estadoConsole = EnumEstado.MENU.getEstadoMaquina();
 
                 return false;
             }
@@ -130,11 +130,10 @@ public class estadoEditaProduto extends maquinaEstado {
             api.updateProduct(productId, produtoEditado);
 
             System.out.println("Produto Editado com sucesso");
-            Menu.estadoConsole = enumEstado.MENU.getEstadoMaquina();
-
-            return false;
         } catch (Exception ex) {
             System.out.println("Ocorreu um erro: " + ex.getMessage());
+        } finally {
+            Menu.estadoConsole = EnumEstado.MENU.getEstadoMaquina();
             return false;
         }
 

@@ -6,15 +6,15 @@
  */
 package frontend;
 
-import maquinaEstado.maquinaEstado;
-import maquinaEstado.enumEstado;
+import maquinaEstado.MaquinaEstado;
+import maquinaEstado.EnumEstado;
 /**
  *
  * @author Usuario
  */
 public class Menu {
 
-     public static maquinaEstado estadoConsole;
+     public static MaquinaEstado estadoConsole;
     
     /**
      * @param args the command line arguments
@@ -22,7 +22,7 @@ public class Menu {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        estadoConsole = enumEstado.MENU.getEstadoMaquina();;
+        estadoConsole = EnumEstado.MENU.getEstadoMaquina();;
         Boolean saida = false;
         while (!saida) {
             saida = estadoConsole.executa();

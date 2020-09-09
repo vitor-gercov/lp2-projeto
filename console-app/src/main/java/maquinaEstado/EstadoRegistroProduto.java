@@ -17,7 +17,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
  *
  * @author oseas
  */
-public class estadoRegistroProduto extends maquinaEstado {
+public class EstadoRegistroProduto extends MaquinaEstado {
 
     @Override
     public boolean
@@ -78,18 +78,18 @@ public class estadoRegistroProduto extends maquinaEstado {
             int opcao = scan.nextInt();
             switch (opcao) {
                 case 1:
-                    Menu.estadoConsole = enumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
+                    Menu.estadoConsole = EnumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
                     break;
                 case 2:
-                    Menu.estadoConsole = enumEstado.MENU.getEstadoMaquina();
+                    Menu.estadoConsole = EnumEstado.MENU.getEstadoMaquina();
                     break;
             }
 
             return false;
         } catch (Exception ex) {
             System.out.println("Ocorreu um erro: "+ ex.getMessage());
-
-            
+        }
+        finally {
             System.out.println("Deseja tentar novamente");
 
             System.out.println("1 - Sim");
@@ -99,15 +99,13 @@ public class estadoRegistroProduto extends maquinaEstado {
             int opcao = scan.nextInt();
             switch (opcao) {
                 case 1:
-                    Menu.estadoConsole = enumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
+                    Menu.estadoConsole = EnumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
                     break;
                 case 2:
-                    Menu.estadoConsole = enumEstado.MENU.getEstadoMaquina();
+                    Menu.estadoConsole = EnumEstado.MENU.getEstadoMaquina();
                     break;
             }
-
             return false;
-            
         }
     }
 }

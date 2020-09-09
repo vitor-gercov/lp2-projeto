@@ -12,7 +12,7 @@ import frontend.Menu;
  *
  * @author oseas
  */
-public class estadoMenu extends maquinaEstado{
+public class EstadoMenu extends MaquinaEstado{
      @Override
     public boolean
     executa(){
@@ -33,19 +33,19 @@ public class estadoMenu extends maquinaEstado{
                 sair = true;
                 break;
             case 1:
-                Menu.estadoConsole = enumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
+                Menu.estadoConsole = EnumEstado.REGISTRA_PRODUTO.getEstadoMaquina();
                 break;
             case 2:
-                Menu.estadoConsole = enumEstado.EDITA_PRODUTO.getEstadoMaquina();
+                Menu.estadoConsole = EnumEstado.EDITA_PRODUTO.getEstadoMaquina();
                 break;
             case 3:
-                Menu.estadoConsole = enumEstado.SELECIONA_PRODUTO.getEstadoMaquina();
+                Menu.estadoConsole = EnumEstado.SELECIONA_PRODUTO.getEstadoMaquina();
                 break;
             case 4:
-                Menu.estadoConsole = enumEstado.EXCLUI_PRODUTO.getEstadoMaquina();
+                Menu.estadoConsole = EnumEstado.EXCLUI_PRODUTO.getEstadoMaquina();
                 break;
             case 5:
-                Menu.estadoConsole = enumEstado.LISTA_PRODUTO.getEstadoMaquina();
+                Menu.estadoConsole = EnumEstado.LISTA_PRODUTO.getEstadoMaquina();
                 break;
         }
         return sair;
