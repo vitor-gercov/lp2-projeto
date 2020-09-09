@@ -23,5 +23,5 @@ public interface DAO<T> {
     
     void deletar(UUID codigo);
     
-    void editar(Produto produto);
+    void editar(T t);
 }
