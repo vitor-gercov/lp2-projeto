@@ -223,4 +223,4 @@ Para rodar a API localmente em **`localhost:8080`**
 
 Para utilizar o console, primeiro é necessario subir a API localmente utilizando o comando "mvnw spring-boot:run" na pasta raiz da API, depois faça o build da aplicação utilizando a classe frontend.java como classe Main e selecione uma das opções do Menu.
 
-As opções de exclusão e edição só funcionarão se ja existir um produto cadastrado.
+As opções de exclusão e edição só funcionarão se ja existir um produto previamente cadastrado.
