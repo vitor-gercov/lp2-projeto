@@ -1,218 +1,226 @@
 # LP2-Projeto
+
 Trabalho requisitado pelo professor Gabriel Baptista, na linguagem Java.
 
 **Informaçes sobre o projeto**:
-  - Versão do Java: `1.8`
-  - Gerenciador de pacotes: `Maven`
-  - Ambiente de desenvolvimento: `NetBeans v12.0`
+
+- Versão do Java: `1.8`
+- Gerenciador de pacotes: `Maven`
+- Ambiente de desenvolvimento: `NetBeans v12.0`
 
 ## Utilizando a interface console :computer:
-
 
 ## Rodando a API localmente :book:
 
 Para rodar a API localmente em **`localhost:8080`**
 
 - Windows
-  
+
   No diretório raíz do projeto `cd api` e execute : `mvnw spring-boot:run`
 
 - Linux/Mac
-  
+
   No diretório raíz do projeto `cd api` e execute : `./mvnw spring-boot:run`
-  
+
 ## API Docs :scroll:
 
 ### Resumo
 
-  | Recurso       | Método                        | Descrição                                                        |
-  | ------------- | ------------------------------| -----------------------------------------------------------------|
-  | `/produtos`   | `POST` `GET` `PATCH` `DELETE` |  Recurso responsável pelo CRUD do produto
-  
+| Recurso     | Método                        | Descrição                                |
+| ----------- | ----------------------------- | ---------------------------------------- |
+| `/produtos` | `POST` `GET` `PATCH` `DELETE` | Recurso responsável pelo CRUD do produto |
+
 ### Produto
-  
+
 <details>
   <summary>Listar</summary>
 
-  ### Retorna todos os produtos cadastrados no estoque
+### Retorna todos os produtos cadastrados no estoque
 
-  **URL**
+**URL**
 
     /produtos
 
-  **Método**
+**Método**
 
-   `GET`
+`GET`
 
-  * **Exemplo de chamada:**
+- **Exemplo de chamada:**
 
-      ```shell
-          curl http://localhost:8080/produtos
-      ```
+  ```shell
+      curl http://localhost:8080/produtos
+  ```
 
-  * **Success Response:**
+- **Success Response:**
 
-    * **Code:** 200 <br />
-      **Body:**
+  - **Code:** 200 <br />
+    **Body:**
 
-      ```json
-          [{
-              "id": "123e4567-e89b-12d3-a456-556642440000",
-              "categoria":"test",
-              "marca": "marca",
-              "tamanho": "M",
-              "descricao": "description",
-              "cor":"Laranja",
-              "valorPago": 232.2,
-              "valorEtiqueta": 233.2,
-              "valorSugerido": 233.2,
-              "localCompra": "Estados test",
-              "dataEntrega": 2020-09-05T22:33:07
-          },...]
-      ```
-  * **Error Response:**
+    ```json
+        [{
+            "id": "123e4567-e89b-12d3-a456-556642440000",
+            "categoria":"test",
+            "marca": "marca",
+            "tamanho": "M",
+            "descricao": "description",
+            "cor":"Laranja",
+            "valorPago": 232.2,
+            "valorEtiqueta": 233.2,
+            "valorSugerido": 233.2,
+            "localCompra": "Estados test",
+            "dataEntrega": 2020-09-05T22:33:07
+        },...]
+    ```
 
-  * **Code:** `400 Bad Request`   <br />
+- **Error Response:**
+
+- **Code:** `400 Bad Request` <br />
 </details>
 
 <details>
   <summary>Cadastrar</summary>
 
-  ### Cadastra um produto no estoque
+### Cadastra um produto no estoque
 
-  **URL**
+**URL**
 
     /produtos
 
-  **Método**
+**Método**
 
-   `POST`
+`POST`
 
-  * **Exemplo de chamada:**
+- **Exemplo de chamada:**
 
-      **Body:**
+  **Body:**
 
-      ```json
-          {
-              "categoria":"test",
-              "marca": "marca",
-              "tamanho": "M",
-              "descricao": "description",
-              "cor":"Laranja",
-              "valorPago": 232.2,
-              "valorEtiqueta": 233.2,
-              "valorSugerido": 233.2,
-              "localCompra": "Estados test",
-              "dataEntrega": 23/04/1994 23:00:01
-          }
-      ```
+  ```json
+      {
+          "categoria":"test",
+          "marca": "marca",
+          "tamanho": "M",
+          "descricao": "description",
+          "cor":"Laranja",
+          "valorPago": 232.2,
+          "valorEtiqueta": 233.2,
+          "valorSugerido": 233.2,
+          "localCompra": "Estados test",
+          "dataEntrega": 23/04/1994 23:00:01
+      }
+  ```
 
-  * **Success Response:**
+- **Success Response:**
 
-    * **Code:** 201 <br />
+  - **Code:** 201 <br />
 
-  * **Error Response:**
+- **Error Response:**
 
-  * **Code:** `400 Bad Request`   <br />
+- **Code:** `400 Bad Request` <br />
 </details>
 
 <details>
   <summary>Pesquisar</summary>
 
-  ### Pesquisa um produto no estoque
+### Pesquisa um produto no estoque
 
-  **URL**
+**URL**
 
     /produtos/[id]
 
-  **Método**
+**Método**
 
-   `GET`
+`GET`
 
-  * **Exemplo de chamada:**
-    ```shell
-          curl http://localhost:8080/produtos/1234-abc
-      ```
+- **Exemplo de chamada:**
 
-  * **Success Response:**
-   
-     **Body:**
+  ```shell
+        curl http://localhost:8080/produtos/1234-abc
+  ```
 
-      ```json
-          {
-              "categoria":"test",
-              "marca": "marca",
-              "tamanho": "M",
-              "descricao": "description",
-              "cor":"Laranja",
-              "valorPago": 232.2,
-              "valorEtiqueta": 233.2,
-              "valorSugerido": 233.2,
-              "localCompra": "Estados test",
-              "dataEntrega": 23/04/1994 23:00:01
-          }
-      ```
+- **Success Response:**
 
-    * **Code:** 204 <br />
+  **Body:**
 
-  * **Error Response:**
+  ```json
+      {
+          "categoria":"test",
+          "marca": "marca",
+          "tamanho": "M",
+          "descricao": "description",
+          "cor":"Laranja",
+          "valorPago": 232.2,
+          "valorEtiqueta": 233.2,
+          "valorSugerido": 233.2,
+          "localCompra": "Estados test",
+          "dataEntrega": 23/04/1994 23:00:01
+      }
+  ```
 
-  * **Code:** `404 Not Found`   <br />
+  - **Code:** 204 <br />
+
+- **Error Response:**
+
+- **Code:** `404 Not Found` <br />
 </details>
 
 <details>
   <summary>Deletar</summary>
 
-  ### Deleta um produto do estoque
+### Deleta um produto do estoque
 
-  **URL**
+**URL**
 
     /produtos/[id]
 
-  **Método**
+**Método**
 
-   `DELETE`
+`DELETE`
 
-  * **Exemplo de chamada:**
-    ```shell
-          curl http://localhost:8080/produtos/1234-abc
-      ```
+- **Exemplo de chamada:**
 
-  * **Success Response:**
-   
-    * **Code:** 204 <br />
+  ```shell
+        curl http://localhost:8080/produtos/1234-abc
+  ```
 
-  * **Error Response:**
+- **Success Response:**
 
-  * **Code:** `404 Not Found`   <br />
+  - **Code:** 204 <br />
+
+- **Error Response:**
+
+- **Code:** `404 Not Found` <br />
 </details>
 
 <details>
   <summary>Editar</summary>
 
-  ### Edita um produto do estoque
+### Edita um produto do estoque
 
-  **URL**
+**URL**
 
     /produtos/[id]
 
-  **Método**
+**Método**
 
-   `PATCH`
+`PATCH`
 
-  * **Exemplo de chamada:**
-    ```shell
-            curl -H "Content-type:application/json" \
-                 http://localhost:8080/produtos/ae123-123ase \
-                 -d '{ "categoria": "Novo Campo", "marca": "Nova Marca" }'
-      ```
-      
-  * **Success Response:**
-   
-    * **Code:** 204 <br />
+- **Exemplo de chamada:**
+  ```shell
+          curl -H "Content-type:application/json" \
+               http://localhost:8080/produtos/ae123-123ase \
+               -d '{ "categoria": "Novo Campo", "marca": "Nova Marca" }'
+  ```
+- **Success Response:**
 
-  * **Error Response:**
+  - **Code:** 204 <br />
 
-  * **Code:** `404 Not Found`   <br />
+- **Error Response:**
+
+- **Code:** `404 Not Found` <br />
 </details>
 
+## Console Docs :scroll:
+
+Para utilizar o console, faça o build da aplicação utilizando a classe frontend.java como classe Main e selecione uma das opções do Menu.
+
+As opções de exclusão e edição só funcionarão se ja existir um produto cadastrado.
