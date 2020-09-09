@@ -34,7 +34,6 @@ public class RestService {
 
     
     public String getProducts() {
-       
         return this.restTemplate.getForObject(this.url, String.class);
     }
     

@@ -26,6 +26,7 @@ public class Produto implements Serializable {
     private double valorPago;
     private double valorSugerido;
     private double valorEtiqueta;
+    private double valorMargem;
     private String localCompra;
     private Date dataEntrada;
 
@@ -34,6 +35,10 @@ public class Produto implements Serializable {
     //Gets
     public UUID getId() {
         return id;
+    }
+    
+    public double getValorMargem(){
+        return valorMargem;
     }
     
     public String getCategoria() {

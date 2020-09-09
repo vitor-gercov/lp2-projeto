@@ -57,19 +57,22 @@ public class ProdutoService {
 
                 throw new Exception("Valor de Data de Entrada inválido!");
             }
-            if (p.getValorPago() == 0) {
+            if (p.getValorPago() <= 0) {
 
                 throw new Exception("Valor de Valor Pago inválido!");
             }
-            if (p.getValorEtiqueta() == 0) {
+            if (p.getValorEtiqueta() <= 0) {
 
                 throw new Exception("Valor de Valor de Etiqueta inválido!");
             }
-            if (p.getValorSugerido() == 0) {
+            if (p.getValorSugerido() <= 0) {
 
                 throw new Exception("Valor de Valor Sugerido inválido!");
             }
-
+            
+                     
+            p.setValorMargem(p.getValorPago() * 2);
+            
             this.produtoDAO.salvar(p);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
@@ -113,17 +116,15 @@ public class ProdutoService {
             if (p.getDataEntrada() != null) {
                 produto.setDataEntrada(p.getDataEntrada());
             }
-            if (p.getValorPago() != 0) {
+            if (p.getValorPago() > 0) {
                 produto.setValorPago(p.getValorPago());
+                produto.setValorMargem(p.getValorPago() * 2);
             }
-            if (p.getValorEtiqueta() != 0) {
+            if (p.getValorEtiqueta() > 0) {
                 produto.setValorEtiqueta(p.getValorEtiqueta());
             }
-            if (p.getValorSugerido() != 0) {
+            if (p.getValorSugerido() > 0) {
                 produto.setValorSugerido(p.getValorSugerido());
-            }
-            if (p.getValorMargem() != 0) {
-                produto.setValorMargem(p.getValorMargem());
             }
 
             this.produtoDAO.editar(produto);

@@ -61,10 +61,10 @@ public class EstadoSelecionaProduto extends MaquinaEstado{
         System.out.println(p.getValorPago());
         System.out.println("Valor Sugerido:");
         System.out.println(p.getValorSugerido());
-        System.out.println("Valor Sugerido:");
-        System.out.println(p.getValorSugerido());
         System.out.println("Valor Etiqueta:");
         System.out.println(p.getValorEtiqueta());
+        System.out.println("Valor Margem:");
+        System.out.println(p.getValorMargem());
         System.out.println("Local Compra:");
         System.out.println(p.getLocalCompra());
         System.out.println("Data entrada:");
