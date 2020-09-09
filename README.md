@@ -227,4 +227,4 @@ As opções de exclusão e edição só funcionarão se ja existir um produto ca
 
 Para utilizar o console, primeiro é necessario subir a API localmente utilizando o comando "mvnw spring-boot:run" na pasta raiz da API, depois faça o build da aplicação utilizando a classe frontend.java como classe Main e selecione uma das opções do Menu.
 
-As opções de exclusão e edição só funcionarão se ja existir um produto previamente cadastrado.
+As opções de exclusão e edição só funcionarão se ja existir um produto previamente cadastrado .
