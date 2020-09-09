@@ -1,5 +1,10 @@
-# lp2-projeto
-Trabalho requisitado pelo professor Gabriel Baptista, na linguagem Java
+# LP2-Projeto
+Trabalho requisitado pelo professor Gabriel Baptista, na linguagem Java.
+
+**Informaçes sobre o projeto**:
+  - Versão do Java: `1.8`
+  - Gerenciador de pacotes: `Maven`
+  - Ambiente de desenvolvimento: `NetBeans v12.0`
 
 ## Utilizando a interface console :computer:
 
@@ -10,11 +15,11 @@ Para rodar a API localmente em **`localhost:8080`**
 
 - Windows
   
-  No diretório raíz do projeto api `cd api` e execute no terminal: `mvnw spring-boot:run`
+  No diretório raíz do projeto `cd api` e execute : `mvnw spring-boot:run`
 
 - Linux/Mac
   
-  No diretório raíz do projeto `cd api` e execute no terminal: `./mvnw spring-boot:run`
+  No diretório raíz do projeto `cd api` e execute : `./mvnw spring-boot:run`
   
 ## API Docs :scroll:
 
