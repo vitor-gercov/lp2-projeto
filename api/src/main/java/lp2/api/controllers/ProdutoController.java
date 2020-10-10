@@ -78,7 +78,9 @@ public class ProdutoController {
     @DeleteMapping("/{id}")
     void deletar(@PathVariable UUID id) {
         ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
-        ProdutoService produtoService = new ProdutoService(daoTxt);
+        ProdutoDAOSQL daoSql = new ProdutoDAOSQL();
+        
+        ProdutoService produtoService = new ProdutoService(daoSql);
         
         produtoService.deletar(id);
     }

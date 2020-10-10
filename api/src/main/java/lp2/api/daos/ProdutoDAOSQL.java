@@ -113,8 +113,16 @@ public class ProdutoDAOSQL implements DAO<Produto> {
 
     @Override
     public void deletar(UUID codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-                                                                       // Tools | Templates.
+            try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "DELETE FROM " + TABELA + " WHERE ID='"+codigo+"'";
+            
+            System.out.println("[Deletar] - SQL: "+ SQL);
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+               stmt.execute();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAOSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
