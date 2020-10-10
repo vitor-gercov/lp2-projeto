@@ -8,6 +8,7 @@ package lp2.api.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import lp2.api.daos.ProdutoDAOSQL;
 import lp2.api.daos.ProdutoDAOtxt;
 import lp2.api.entities.Produto;
 import lp2.api.services.ProdutoService;
@@ -33,9 +34,10 @@ public class ProdutoController {
 
     @GetMapping
     List<Produto> listar() {
-        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+     //   ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+        ProdutoDAOSQL daoSql = new ProdutoDAOSQL();
         
-        ProdutoService produtoService = new ProdutoService(daoTxt);
+        ProdutoService produtoService = new ProdutoService(daoSql);
         List<Produto> produtos = new ArrayList<>();
 
         produtos = produtoService.listar();
@@ -54,8 +56,10 @@ public class ProdutoController {
     
     @GetMapping("/{id}")
     Produto pesquisar(@PathVariable UUID id) {
-        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();  
-        ProdutoService produtoService = new ProdutoService(daoTxt);
+      //  ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();  
+        ProdutoDAOSQL daoSql = new ProdutoDAOSQL();
+            
+        ProdutoService produtoService = new ProdutoService(daoSql);
         
         Produto produto = produtoService.pesquisar(id);
         return produto;
