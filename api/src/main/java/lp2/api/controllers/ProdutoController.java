@@ -48,9 +48,10 @@ public class ProdutoController {
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     void cadastrar(@RequestBody Produto newProduto) {
-        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
-        ProdutoService produtoService = new ProdutoService(daoTxt);
-
+        ProdutoDAOSQL daoSql = new ProdutoDAOSQL();
+        
+        ProdutoService produtoService = new ProdutoService(daoSql);
+        
         produtoService.cadastrar(newProduto);
     }
     
@@ -68,8 +69,10 @@ public class ProdutoController {
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     void editar(@RequestBody Produto newProduto, @PathVariable UUID id) {
-        ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
-        ProdutoService produtoService = new ProdutoService(daoTxt);
+       // ProdutoDAOtxt daoTxt = new ProdutoDAOtxt();
+        ProdutoDAOSQL daoSql = new ProdutoDAOSQL();
+        
+        ProdutoService produtoService = new ProdutoService(daoSql);
         
         produtoService.editar(id,newProduto);
     }

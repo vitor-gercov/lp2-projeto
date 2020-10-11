@@ -154,6 +154,7 @@ public class Produto {
         this.valorSugerido = valorSugerido;
     }
 
+    // DO NOT CALL toString() if id is empty !
     @Override
     public String toString() {
         return this.id.toString() + ',' + this.categoria + ',' + this.tamanho + ',' + this.descricao + ',' + this.cor + ','

@@ -26,19 +26,7 @@ public class ProdutoDAOSQL implements DAO<Produto> {
     private final String STRING_CONEXAO = "jdbc:postgresql://localhost/lp2";
     private final String USUARIO = "postgres";
     private final String SENHA = "admin";
-    private final String TABELA = "produtos";
-    
-    private ResultSet executaSql(String comando) throws SQLException{
-        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
-            System.out.println("Banco conectado!");
-            String SQL = comando;
-            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
-                try (ResultSet rs = stmt.executeQuery()) {
-                    return rs;
-                    }
-                }
-            }
-        } 
+    private final String TABELA = "produtos"; 
 
     private Produto preencheProduto(ResultSet rs) {
         Produto p = new Produto();
@@ -83,9 +71,19 @@ public class ProdutoDAOSQL implements DAO<Produto> {
     }
 
     @Override
-    public void salvar(Produto t) {
-        
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void salvar(Produto p) {
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "INSERT INTO produtos (categoria,cor,descricao,marca,tamanho,valor_etiqueta, valor_margem, valor_pago, valor_sugerido,local_compra)"
+                    + " VALUES('"+ p.getCategoria()+"','"+p.getCor()+"','"+p.getDescricao()+"','"+p.getMarca()+"','"+p.getTamanho()+"','"+p.getValorEtiqueta()+"','"+
+                    p.getValorMargem()+"','"+p.getValorPago()+"','"+p.getValorSugerido()+"','"+p.getLocalCompra()+"')";
+            
+            System.out.println("[Salvar] - SQL: "+ SQL);
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                stmt.execute();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAOSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -126,9 +124,20 @@ public class ProdutoDAOSQL implements DAO<Produto> {
     }
 
     @Override
-    public void editar(Produto t) {
-        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-                                                                       // Tools | Templates.
+    public void editar(Produto p) {
+        try (Connection conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+            String SQL = "UPDATE produtos set categoria='"+p.getCategoria()+"',cor='"+p.getCor()+"',tamanho='"+ p.getTamanho()+
+            "',descricao='"+p.getDescricao()+"',marca='"+p.getMarca()+"',valor_etiqueta='"+p.getValorEtiqueta()+"',valor_margem='"
+            + p.getValorMargem() + "',valor_pago='" + p.getValorPago() + "',valor_sugerido='" + p.getValorSugerido() + "',local_compra='" 
+            + p.getLocalCompra() + "',data_entrada='" + p.getDataEntrada().toString() + "' WHERE id='" + p.getId().toString()+"'";
+            
+            System.out.println("[Editar] - SQL: "+ SQL);
+            try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
+                stmt.execute();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAOSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
