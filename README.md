@@ -26,6 +26,49 @@ Para utilizar o console, primeiro é necessario subir a API localmente utilizand
 
 As opções de exclusão e edição só funcionarão se ja existir um produto previamente cadastrado .
 
+## Banco de Dados :disket:
+
+### Resumo
+
+- Banco Relacional utilizado: `Postgres SQL`
+  - String de conexão: `jdbc:postgresql://localhost/lp2`
+  - Usuário: `postgres` Senha: `admin`
+  
+- Se estiver em um ambiente linux com a engine docker, execute o seguinte comando para inicializar o banco em um container:
+
+      docker run --name mtruck-pg -p 5432:5432 -e POSTGRES_DB=lp2 -e POSTGRES_PASSWORD=admin -d postgres:alpine
+
+
+### Script SQL - Tabela de Produtos
+
+  ```SQL
+
+      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+      CREATE TABLE produtos (
+          id uuid primary key DEFAULT uuid_generate_v4 (),
+          descricao VARCHAR not null,
+          categoria VARCHAR NOT NULL,
+          cor VARCHAR NOT NULL,
+          marca varchar not null,
+          tamanho varchar not null,
+          valor_etiqueta float not null,
+          valor_margem float not null,
+          valor_pago float not null,
+          valor_sugerido float not null,
+          local_compra VARCHAR not null,
+          data_entrada date NOT null default current_date
+      );
+
+      INSERT INTO produtos (categoria,cor,descricao,marca,tamanho,valor_etiqueta, valor_margem, valor_pago, valor_sugerido,local_compra)
+          VALUES ('saia', 'vermelha','sainha' ,'zara', 'M', 128.9, 100, 88.3, 99,'são paulo');
+        
+      INSERT INTO produtos (categoria,cor,descricao,marca,tamanho,valor_etiqueta, valor_margem, valor_pago, valor_sugerido,local_compra)
+          VALUES ('saia', 'azul','sainha' ,'zara', 'M', 128.9, 115, 88.3, 99,'são paulo');   
+
+
+  ```
+
 ## API Docs :scroll:
 
 ### Resumo
@@ -72,7 +115,7 @@ As opções de exclusão e edição só funcionarão se ja existir um produto pr
             "valorEtiqueta": 233.2,
             "valorSugerido": 233.2,
             "localCompra": "Estados test",
-            "dataEntrega": 2020-09-05T22:33:07
+            "dataEntrada": 2020-09-05T22:33:07
         },...]
     ```
 
@@ -109,7 +152,7 @@ As opções de exclusão e edição só funcionarão se ja existir um produto pr
           "valorEtiqueta": 233.2,
           "valorSugerido": 233.2,
           "localCompra": "Estados test",
-          "dataEntrega": 23/04/1994 23:00:01
+          "dataEntrada": 23/04/1994 23:00:01
       }
   ```
 
@@ -156,7 +199,7 @@ As opções de exclusão e edição só funcionarão se ja existir um produto pr
           "valorEtiqueta": 233.2,
           "valorSugerido": 233.2,
           "localCompra": "Estados test",
-          "dataEntrega": 23/04/1994 23:00:01
+          "dataEntrada": 23/04/1994 23:00:01
       }
   ```
 
