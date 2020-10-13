@@ -61,10 +61,10 @@ As opções de exclusão e edição só funcionarão se ja existir um produto pr
       );
 
       INSERT INTO produtos (categoria,cor,descricao,marca,tamanho,valor_etiqueta, valor_margem, valor_pago, valor_sugerido,local_compra)
-          VALUES ('saia', 'vermelha','camiseta' ,'zara', 'M', 128.9, 100, 88.3, 99,'são paulo');
+          VALUES ('sport-fino', 'vermelha','camiseta' ,'zara', 'M', 128.9, 100, 88.3, 99,'são paulo');
         
       INSERT INTO produtos (categoria,cor,descricao,marca,tamanho,valor_etiqueta, valor_margem, valor_pago, valor_sugerido,local_compra)
-          VALUES ('saia', 'azul','blusa' ,'zara', 'P', 100.9, 120, 100.3, 99.9,'são paulo');   
+          VALUES ('sport-fino', 'azul','blusa' ,'zara', 'P', 100.9, 120, 100.3, 99.9,'são paulo');   
 
 
   ```
