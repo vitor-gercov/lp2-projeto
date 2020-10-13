@@ -26,7 +26,7 @@ Para utilizar o console, primeiro é necessario subir a API localmente utilizand
 
 As opções de exclusão e edição só funcionarão se ja existir um produto previamente cadastrado .
 
-## Banco de Dados :disket:
+## Banco de Dados :floppy_disk:
 
 ### Resumo
 
